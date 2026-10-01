@@ -117,7 +117,7 @@ public class Main {
             String number = contacts[i][2];
 
             // Hide deleted contacts
-            if (name.equalsIgnoreCase("DELETED")) {
+            if (name.equalsIgnoreCase("DELETED") || name.equalsIgnoreCase("")) {
                 continue;
             }
 
@@ -311,8 +311,8 @@ public class Main {
         }
 
         for (int i = 0; i < contactCount; i++) {
-            contacts[i][1] = "DELETED";
-            contacts[i][2] = "DELETED";
+            contacts[i][1] = "";
+            contacts[i][2] = "";
         }
 
         System.out.println("All contacts have been successfully deleted!");
