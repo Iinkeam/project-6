@@ -7,7 +7,7 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
 
     // Global 2D array and contact tracker
-    public static String[][] contacts = new String[100][3]; // {{ Index, Name, Number }}
+    public static String[][] contacts = new String[100][3]; // {{ Index, Name, Number }, { }, { }}
     public static int contactCount = 0; // Keeps track of current available row position
 
     public static void main(String[] Args) {
@@ -26,7 +26,7 @@ public class Main {
             System.out.print("Choose an option: ");
 
             String choiceInput = scanner.nextLine();
-            int choice = -1;
+            int choice;
 
             try {
                 choice = Integer.parseInt(choiceInput);
@@ -152,7 +152,7 @@ public class Main {
                 String name = contacts[i][1];
                 String number = contacts[i][2];
 
-                if (name.equalsIgnoreCase("DELETED")) {
+                if (name.equalsIgnoreCase("DELETED") || name.equalsIgnoreCase("")) {
                     continue;
                 }
 
@@ -167,7 +167,7 @@ public class Main {
                 String name = contacts[i][1];
                 String number = contacts[i][2];
 
-                if (name.equalsIgnoreCase("DELETED")) {
+                if (name.equalsIgnoreCase("DELETED") || name.equalsIgnoreCase("")) {
                     continue;
                 }
 
@@ -182,7 +182,7 @@ public class Main {
                 String name = contacts[i][1];
                 String number = contacts[i][2];
 
-                if (name.equalsIgnoreCase("DELETED")) {
+                if (name.equalsIgnoreCase("DELETED") || name.equalsIgnoreCase("")) {
                     continue;
                 }
 
@@ -222,7 +222,7 @@ public class Main {
 
         int row = userIndex - 1;
 
-        if (row < 0 || row >= contactCount || contacts[row][1].equalsIgnoreCase("DELETED")) {
+        if (row < 0 || row >= contactCount || contacts[row][1].equalsIgnoreCase("DELETED") || contacts[row][1].equalsIgnoreCase("")) {
             System.out.println("Contact not found at index " + userIndex + ".");
             return;
         }
@@ -230,7 +230,7 @@ public class Main {
         System.out.println("\nSelected Contact: " + contacts[row][0] + ". " + contacts[row][1] + " - " + contacts[row][2]);
 
         System.out.print("Select changing part (index / name / number): ");
-        String change = scanner.nextLine().toLowerCase().trim();
+        String change = scanner.nextLine().toLowerCase();
 
         if (change.contains("index")) {
             System.out.print("Enter new index display: ");
@@ -273,7 +273,7 @@ public class Main {
 
         int row = userIndex - 1;
 
-        if (row < 0 || row >= contactCount || contacts[row][1].equalsIgnoreCase("DELETED")) {
+        if (row < 0 || row >= contactCount || contacts[row][1].equalsIgnoreCase("DELETED") || contacts[row][1].equalsIgnoreCase("")) {
             System.out.println("Contact not found at index " + userIndex + ".");
             return;
         }
@@ -281,7 +281,7 @@ public class Main {
         // Show details and ask confirmation (Y/N)
         System.out.println("Selected Contact: " + contacts[row][0] + ". " + contacts[row][1] + " - " + contacts[row][2]);
         System.out.print("Are you sure you want to DELETE this contact? (Y / N): ");
-        String confirmation = scanner.nextLine().trim();
+        String confirmation = scanner.nextLine();
 
         if (!confirmation.equalsIgnoreCase("yes") && !confirmation.equalsIgnoreCase("y")) {
             System.out.println("Operation canceled. Contact was not deleted.");
@@ -311,9 +311,12 @@ public class Main {
         }
 
         for (int i = 0; i < contactCount; i++) {
+            contacts[i][0] = "";
             contacts[i][1] = "";
             contacts[i][2] = "";
         }
+
+        contactCount = 0;
 
         System.out.println("All contacts have been successfully deleted!");
     }

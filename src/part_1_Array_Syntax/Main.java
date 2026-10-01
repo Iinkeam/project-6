@@ -26,7 +26,7 @@ public class Main {
 
         //part.3
         System.out.println("\nFor loop:");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < intArray.length; i++) {
             System.out.print(intArray[i] + " ");
         }
         System.out.println("");

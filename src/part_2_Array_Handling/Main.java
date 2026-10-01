@@ -112,7 +112,7 @@ public class Main {
         int[] arr = new int[size];
 
         for (int j = 0; j < size; j++) {
-            arr[j] = random.nextInt(-100, 100);
+            arr[j] = random.nextInt(-100, 101);
         }
 
         return arr;
