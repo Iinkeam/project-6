@@ -277,7 +277,6 @@ public class Main {
             System.out.println("Contact not found at index " + userIndex + ".");
             return;
         }
-
         // Show details and ask confirmation (Y/N)
         System.out.println("Selected Contact: " + contacts[row][0] + ". " + contacts[row][1] + " - " + contacts[row][2]);
         System.out.print("Are you sure you want to DELETE this contact? (Y / N): ");
@@ -303,7 +302,7 @@ public class Main {
         }
 
         System.out.print("Are you sure you want to DELETE all contacts? (Y / N): ");
-        String confirmation = scanner.nextLine().trim();
+        String confirmation = scanner.nextLine();
 
         if (!confirmation.equalsIgnoreCase("yes") && !confirmation.equalsIgnoreCase("y")) {
             System.out.println("Operation canceled. No contacts were deleted.");
